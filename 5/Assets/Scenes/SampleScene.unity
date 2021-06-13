@@ -851,7 +851,7 @@ SpriteRenderer:
   m_Size: {x: 8.21, y: 7.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &651672718
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmSound: {fileID: 1505590617}
-  _changeRate: 5
+  _changeRate: 4
 --- !u!1 &2110555381
 GameObject:
   m_ObjectHideFlags: 0
