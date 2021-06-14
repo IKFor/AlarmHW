@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class Detector : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _detect;
+    [SerializeField] private UnityEvent _detected;
 
     private bool _isDetected = false;
 
-    void Update()
+    private void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
 
@@ -18,9 +18,8 @@ public class Detector : MonoBehaviour
             _isDetected = !_isDetected;
             if (_isDetected)
             {
-                _detect?.Invoke();
+                _detected?.Invoke();
             }
         }
-
     }
 }

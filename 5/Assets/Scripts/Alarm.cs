@@ -12,12 +12,7 @@ public class Alarm : MonoBehaviour
     private float _currVolume = 0;
     private float _targetVolume = 1;
 
-    // private void Start()
-    // {
-    //     _alarmSound.DOFade(0, 3).SetLoops(-1, LoopType.Yoyo).From();
-    // }
-
-    void Update()
+    private void Update()
     {
         _currVolume = Mathf.MoveTowards(_currVolume, _targetVolume, (1 / _changeRate) * Time.deltaTime);
 
@@ -29,7 +24,7 @@ public class Alarm : MonoBehaviour
             _targetVolume = 1;
     }
 
-    public void OnAlarm()
+    public void SwitchAlarmStatus()
     {
         if (_isPlaing)
         {
