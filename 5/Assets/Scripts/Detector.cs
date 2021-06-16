@@ -5,20 +5,24 @@ using UnityEngine.Events;
 
 public class Detector : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _detected;
+    [SerializeField] private UnityEvent _leftHouse;
+    [SerializeField] private UnityEvent _enteredHouse;
 
-    private bool _isDetected = false;
+    private bool _isInside = false;
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-
-        if (hit.collider.GetComponent<Player>() != _isDetected)
+        if (collision.TryGetComponent<Player>(out Player player))
         {
-            _isDetected = !_isDetected;
-            if (_isDetected)
+            if (!_isInside)
             {
-                _detected?.Invoke();
+                _enteredHouse?.Invoke();
+                _isInside = true;
+            }
+            else
+            {
+                _leftHouse?.Invoke();
+                _isInside = false;
             }
         }
     }

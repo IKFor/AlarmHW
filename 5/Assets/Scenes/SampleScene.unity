@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87964582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.7808, y: -0.15, z: 0.88455635}
+  m_LocalPosition: {x: 6.84, y: -0.12, z: 0.88455635}
   m_LocalScale: {x: 7.620719, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110555382}
@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307094705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.307, y: -6.2768803, z: 0.88455635}
+  m_LocalPosition: {x: 1.3662003, y: -6.2468805, z: 0.88455635}
   m_LocalScale: {x: 18.727657, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110555382}
@@ -367,7 +367,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498441936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.21, y: -1.3379802, z: 0.88455635}
+  m_LocalPosition: {x: 10.2692, y: -1.3079802, z: 0.88455635}
   m_LocalScale: {x: 1, y: 10.8378, z: 1}
   m_Children: []
   m_Father: {fileID: 2110555382}
@@ -527,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.059200287, y: 0.029999971, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -671,7 +671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534824945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -4.18, z: 0}
+  m_LocalPosition: {x: -7.2107997, y: -3.8700001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -703,7 +703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585131434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.49, y: -1.53, z: 0.88455635}
+  m_LocalPosition: {x: 3.5492003, y: -1.5, z: 0.88455635}
   m_LocalScale: {x: 1, y: 2.1622, z: 1}
   m_Children: []
   m_Father: {fileID: 2110555382}
@@ -796,11 +796,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1505590616}
   - component: {fileID: 1505590615}
+  - component: {fileID: 1505590619}
   - component: {fileID: 1505590617}
   - component: {fileID: 1505590614}
   - component: {fileID: 1505590618}
   m_Layer: 0
-  m_Name: Detector
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,12 +819,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8de700e53abb684c9a5c43c2edaa1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detected:
+  _leftHouse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1505590618}
         m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
-        m_MethodName: SwitchAlarmStatus
+        m_MethodName: TurnOffAlarm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _enteredHouse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1505590618}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: TurnOnAlarm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -892,8 +908,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505590613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -1.7885, z: 0}
-  m_LocalScale: {x: 1, y: 0.38559517, z: 1}
+  m_LocalPosition: {x: 1.5592003, y: -3.24, z: 0}
+  m_LocalScale: {x: 1, y: 3.2410839, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1007,7 +1023,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmSound: {fileID: 1505590617}
-  _changeRate: 4
+  _changeRate: 3
+--- !u!61 &1505590619
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505590613}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2110555381
 GameObject:
   m_ObjectHideFlags: 0

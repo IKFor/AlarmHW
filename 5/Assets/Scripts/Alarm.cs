@@ -8,7 +8,6 @@ public class Alarm : MonoBehaviour
     [SerializeField] private AudioSource _alarmSound;
     [SerializeField] private float _changeRate;
 
-    private bool _isPlaing = false;
     private float _currVolume = 0;
     private float _targetVolume = 1;
 
@@ -24,17 +23,13 @@ public class Alarm : MonoBehaviour
             _targetVolume = 1;
     }
 
-    public void SwitchAlarmStatus()
+    public void TurnOnAlarm()
     {
-        if (_isPlaing)
-        {
-            _isPlaing = false;
-            _alarmSound.Stop();
-        }
-        else
-        {
-            _isPlaing = true;
-            _alarmSound.Play();
-        }
+        _alarmSound.Play();
+    }
+
+    public void TurnOffAlarm()
+    {
+        _alarmSound.Stop();
     }
 }
