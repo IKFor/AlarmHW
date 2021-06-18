@@ -8,13 +8,12 @@ public class Alarm : MonoBehaviour
     [SerializeField] private AudioSource _alarmSound;
     [SerializeField] private float _changeRate;
 
-    private bool _isWorking = false;
     private float _currVolume = 0;
     private float _targetVolume = 1;
 
-    private void Update()
+    private IEnumerator ChangeVolume()
     {
-        if (_isWorking)
+        while (true)
         {
             _currVolume = Mathf.MoveTowards(_currVolume, _targetVolume, (1 / _changeRate) * Time.deltaTime);
 
@@ -24,18 +23,23 @@ public class Alarm : MonoBehaviour
                 _targetVolume = 0;
             else if (_currVolume == 0)
                 _targetVolume = 1;
+
+            yield return null;
         }
     }
+
 
     public void TurnOnAlarm()
     {
         _alarmSound.Play();
-        _isWorking = true;
+
+        StartCoroutine(ChangeVolume());
     }
 
     public void TurnOffAlarm()
     {
         _alarmSound.Stop();
-        _isWorking = false;
+
+        StopCoroutine(ChangeVolume());
     }
 }
