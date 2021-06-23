@@ -8,6 +8,7 @@ public class Alarm : MonoBehaviour
     [SerializeField] private AudioSource _alarmSound;
     [SerializeField] private float _changeRate;
 
+    private Coroutine ChangeVolumeJob;
     private float _currVolume = 0;
     private float _targetVolume = 1;
 
@@ -33,13 +34,13 @@ public class Alarm : MonoBehaviour
     {
         _alarmSound.Play();
 
-        StartCoroutine(ChangeVolume());
+        ChangeVolumeJob = StartCoroutine(ChangeVolume());
     }
 
     public void TurnOffAlarm()
     {
         _alarmSound.Stop();
 
-        StopCoroutine(ChangeVolume());
+        StopCoroutine(ChangeVolumeJob);
     }
 }
